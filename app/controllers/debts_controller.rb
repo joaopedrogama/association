@@ -3,7 +3,7 @@ class DebtsController < ApplicationController
 
   # GET /debts or /debts.json
   def index
-    @debts = Debt.limit(100)
+    @debts = Debt.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /debts/new

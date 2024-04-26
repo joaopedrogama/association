@@ -3,17 +3,7 @@
 <div class="row mt-4">
   <div class="col-6">
     <%= form_with(model: payment) do |form| %>
-      <% if payment.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
-
-          <ul>
-            <% payment.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= display_operation_errors(payment) %>
 
       <div class="mb-3">
         <%= form.label :person_id, 'Associado', class: 'form-label' %>
@@ -40,16 +30,3 @@
     <% end %>
   </div>
 </div>
-
-<%# TODO: refactor DRY %>
-<% if payment.errors.any? %>
-  <div style="color: red">
-    <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
-
-    <ul>
-      <% payment.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>

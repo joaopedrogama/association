@@ -10,6 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% if notice.present? %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
   <body>
     <% if signed_in? %>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

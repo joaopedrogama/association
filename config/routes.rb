@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   resources :payments
   devise_for :users
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   resources :debts, except: %i(edit update show)
 
@@ -19,4 +20,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'dashboard#index'
+
+  get 'reports/balance'
 end

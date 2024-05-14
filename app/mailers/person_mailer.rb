@@ -4,14 +4,7 @@ class PersonMailer < ApplicationMailer
     default from: 'admin@admin.com'
 
     def balance_report(person)
-        attributes = %w{name balance}
-        csv = CSV.generate() do |csv|
-            csv << attributes
-            Person.order(:name).each do |people|
-                row = [people.name, people.balance]
-                csv << row
-            end
-        end
+        csv = PersonMailerService.call
         attachments['balance_report.csv'] = {
             mime_type: 'text/csv',
             content: csv

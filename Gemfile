@@ -56,6 +56,8 @@ gem 'rails_performance'
 
 gem "chartkick"
 
+gem 'sidekiq'
+
 gem 'will_paginate', '~> 4.0'
 
 group :development, :test do

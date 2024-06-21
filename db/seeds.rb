@@ -14,7 +14,7 @@ puts "111111"
   User.create email: Faker::Internet.email, password: '111111'
 end
 
-50.times do |counter|
+100.times do |counter|
   puts "Inserting Person #{counter}"
 
   attrs = {
@@ -24,7 +24,7 @@ end
     active: [true, false].sample,
     user: User.order('random()').first
   }
-  person = Person.create(attrs)
+  Person.create(attrs)
 
   5.times do |debt_counter|
     puts "Inserting Debt #{debt_counter}"

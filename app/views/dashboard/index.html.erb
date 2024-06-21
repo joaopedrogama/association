@@ -64,6 +64,20 @@
       </div>
     </div>
   </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ultimos lançamentos de mais de 10o mil</h5>
+        <ul>
+        <% if @last_payments_above_100_thousand %>
+          <% @last_payments_above_100_thousand.each do |payment| %>
+            <li><%= person.person.name %> - <%= payment.amount %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row mt-2">

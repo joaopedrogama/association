@@ -4,6 +4,10 @@ class DashboardService < ApplicationService
         @user = user
     end
 
+    def last_payments_above_100_thousand
+        Payment.where("amount > 10000").order(created_at: :desc).limit(10)
+    end
+
     def call
         Rails.cache.fetch("dashboard", expires_in: 1.hour) do
             dashboard_data = {}

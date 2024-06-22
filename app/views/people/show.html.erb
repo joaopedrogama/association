@@ -2,6 +2,27 @@
 
 <%= render @person %>
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Ação</th>
+      <th scope="col">Alterado por</th>
+      <th scope="col">Alterações feitas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @person.audits.each do |audit| %>
+      <tr>
+        <th scope="row"><%= audit.id %></th>
+        <td><%= audit.action %></td>
+        <td><%= audit.user.email %></td>
+        <td><%= audit.audited_changes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Editar', edit_person_path(@person), class: "btn btn-primary mb-2" %>
 
 <%= button_to "Remover", @person, method: :delete, class: 'btn btn-danger' %>

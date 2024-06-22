@@ -64,20 +64,6 @@
       </div>
     </div>
   </div>
-  <div class="col-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Ultimos lançamentos de mais de 10o mil</h5>
-        <ul>
-        <% if @last_payments_above_100_thousand %>
-          <% @last_payments_above_100_thousand.each do |payment| %>
-            <li><%= person.person.name %> - <%= payment.amount %></li>
-          <% end %>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="row mt-2">
@@ -95,6 +81,21 @@
       <div class="card-body">
         <h5 class="card-title">Últimos pagamentos</h5>
         <%= line_chart @dashboard[:last_payments] %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ultimos lançamentos de mais de 100 mil</h5>
+        <ul>
+        <% if @last_debts_above_100_thousand %>
+          <% @last_debts_above_100_thousand.each do |payment| %>
+            <li><%= payment.person.name %> - R$<%= payment.amount.to_i %></li>
+          <% end %>
+        <% end %>
+        </ul>
       </div>
     </div>
   </div>

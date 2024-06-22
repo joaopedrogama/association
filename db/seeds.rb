@@ -24,12 +24,12 @@ end
     active: [true, false].sample,
     user: User.order('random()').first
   }
-  Person.create(attrs)
+  person =Person.create(attrs)
 
   5.times do |debt_counter|
     puts "Inserting Debt #{debt_counter}"
     person.debts.create(
-      amount: Faker::Number.between(from: 1, to: 200),
+      amount: Faker::Number.between(from: 100_000, to: 200_000),
       observation: Faker::Lorem.paragraph
     )
   end

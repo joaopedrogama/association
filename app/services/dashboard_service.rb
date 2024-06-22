@@ -4,8 +4,8 @@ class DashboardService < ApplicationService
         @user = user
     end
 
-    def last_payments_above_100_thousand
-        Payment.where("amount > 10000").order(created_at: :desc).limit(10)
+    def last_debts_above_100_thousand
+        Debt.where("amount > 100000").includes(:person).order(created_at: :desc).limit(10)
     end
 
     def call
